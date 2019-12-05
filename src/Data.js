@@ -3,34 +3,39 @@ let initialItems = [
     id: "asewq",
     description: "Nice boats. 50% off. wow.",
     price: 10000,
+    remaining: 3,
     image: "/boat.png",
     sellerId: "ewio"
   },
   {
     id: "wqwasq",
-    description: "Lawn chairs",
+    description: "Lawn chairs.",
     price: 50,
+    remaining: 15,
     image: "/lawnchair.jpg",
     sellerId: "xcvb"
   },
   {
     id: "ewsdfa",
-    description: "Bowling Ball",
+    description: "Brand-spankin' new bowling ball.",
     price: 110,
+    remaining: 10,
     image: "/bowlingball.jpg",
     sellerId: "xcvb"
   },
   {
     id: "aodief",
-    description: "Car",
+    description: "A new car!",
     price: 25000,
+    remaining: 5,
     image: "/car.jpg",
     sellerId: "xkfr"
   },
   {
     id: "widsao",
-    description: "Burger",
+    description: "Burger. Need more?",
     price: 5,
+    remaining: 100,
     image: "/burger.jpg",
     sellerId: "xkfr"
   }

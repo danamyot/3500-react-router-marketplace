@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-class Item extends Component {
+class ItemDetails extends Component {
   render() {
     return (
       <div className="card center ">
@@ -11,14 +11,12 @@ class Item extends Component {
         </Link>
         <div>
           <div>{this.props.item.description}</div>
+          <div>{`Left in stock: ${this.props.item.remaining}`}</div>
           <div>{this.props.item.cost}</div>
-          <Link to={"/seller/" + this.props.item.sellerId}>
-            Link to seller{" "}
-          </Link>
         </div>
       </div>
     );
   }
 }
 
-export default Item;
+export default ItemDetails;
