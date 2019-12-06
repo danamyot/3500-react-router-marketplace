@@ -12,6 +12,7 @@ class ItemDetails extends Component {
       price,
       remaining,
       image,
+      sellerId,
       reviewIds
     } = this.props.item;
     const itemReviews = reviewIds.map(id => {
@@ -28,12 +29,13 @@ class ItemDetails extends Component {
           <div>{price}</div>
           <div>{`Left in stock: ${remaining}`}</div>
           <div>{price}</div>
+          <Link to={`/seller/${sellerId}`}>View Seller's profile</Link>
         </div>
         <div className="item-reviews">
           {itemReviews.map(review => {
             return (
               <div className="item-review" key={review.id}>
-                <div>{review.rating}</div>
+                <div>{"\u2B50".repeat(Number(review.rating))}</div>
                 <div>{review.comment}</div>
                 <Link to={`/reviewer/${review.reviewer}`}>
                   More reviews from this person
