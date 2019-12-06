@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, Link } from "react-router-dom";
 import { itemList, sellerList, reviewerList } from "./Data";
 import "./style.css";
 import Item from "./Item.jsx";
@@ -10,9 +10,21 @@ import Reviewer from "./Reviewer.jsx";
 let renderAllItems = () => {
   return (
     <div>
-      {itemList.map(item => {
-        return <Item item={item} key={item.id} />;
-      })}
+      <div className="all-sellers">
+        <div>All sellers:</div>
+        {sellerList.map(seller => {
+          return (
+            <div>
+              <Link to={`/seller/${seller.id}`}>{seller.name}</Link>
+            </div>
+          );
+        })}
+      </div>
+      <div className="all-items">
+        {itemList.map(item => {
+          return <Item item={item} key={item.id} />;
+        })}
+      </div>
     </div>
   );
 };
