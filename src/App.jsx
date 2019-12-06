@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
-import { initialItems, initialSellers } from "./Data";
+import { itemList, sellerList } from "./Data";
 import "./style.css";
 import Item from "./Item.jsx";
 import ItemDetails from "./ItemDetails.jsx";
@@ -9,8 +9,8 @@ import Seller from "./Seller.jsx";
 let renderAllItems = () => {
   return (
     <div>
-      {initialItems.map(item => {
-        return <Item item={item} />;
+      {itemList.map(item => {
+        return <Item item={item} key={item.id} />;
       })}
     </div>
   );
@@ -18,14 +18,14 @@ let renderAllItems = () => {
 
 let renderSeller = routerData => {
   let sellerId = routerData.match.params.sid;
-  let matchingSellers = initialSellers.filter(seller => seller.id === sellerId);
-  return <Seller seller={matchingSellers[0]} />;
+  let matchingSeller = sellerList.find(seller => seller.id === sellerId);
+  return <Seller seller={matchingSeller} />;
 };
 
 let renderItemDetails = routerData => {
   let productId = routerData.match.params.pid;
-  let matchingItems = initialItems.filter(item => item.id === productId);
-  return <ItemDetails item={matchingItems[0]} />;
+  let matchingItem = itemList.find(item => item.id === productId);
+  return <ItemDetails item={matchingItem} />;
 };
 
 class App extends Component {
