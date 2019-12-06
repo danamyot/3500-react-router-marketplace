@@ -19,7 +19,7 @@ class ItemDetails extends Component {
     });
     return (
       <div className="card center ">
-        <Link to={"/item/" + id}>
+        <Link to={`/item/${id}`}>
           <img height="100px" src={image} />
         </Link>
         <div className="item-description">
@@ -35,7 +35,7 @@ class ItemDetails extends Component {
               <div className="item-review" key={review.id}>
                 <div>{review.rating}</div>
                 <div>{review.comment}</div>
-                <Link to={"/reviewer/" + review.reviewer}>
+                <Link to={`/reviewer/${review.reviewer}`}>
                   More reviews from this person
                 </Link>
               </div>

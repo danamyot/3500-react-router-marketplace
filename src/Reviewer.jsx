@@ -16,7 +16,7 @@ class Reviewer extends Component {
           {itemReviews.map(review => {
             return (
               <div className="item-review" key={review.id}>
-                <Link to={"/item/" + review.productId}>
+                <Link to={`/item/${review.productId}`}>
                   <div>
                     {itemList.find(item => item.id === review.productId).name}
                   </div>
