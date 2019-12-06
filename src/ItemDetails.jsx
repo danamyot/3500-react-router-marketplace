@@ -7,6 +7,7 @@ class ItemDetails extends Component {
   render() {
     const {
       id,
+      name,
       description,
       price,
       remaining,
@@ -22,6 +23,7 @@ class ItemDetails extends Component {
           <img height="100px" src={image} />
         </Link>
         <div className="item-description">
+          <div>{name}</div>
           <div>{description}</div>
           <div>{price}</div>
           <div>{`Left in stock: ${remaining}`}</div>
@@ -33,6 +35,9 @@ class ItemDetails extends Component {
               <div className="item-review" key={review.id}>
                 <div>{review.rating}</div>
                 <div>{review.comment}</div>
+                <Link to={"/reviewer/" + review.reviewer}>
+                  More reviews from this person
+                </Link>
               </div>
             );
           })}

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter } from "react-router-dom";
-import { itemList, sellerList } from "./Data";
+import { itemList, sellerList, reviewerList } from "./Data";
 import "./style.css";
 import Item from "./Item.jsx";
 import ItemDetails from "./ItemDetails.jsx";
 import Seller from "./Seller.jsx";
+import Reviewer from "./Reviewer.jsx";
 
 let renderAllItems = () => {
   return (
@@ -28,6 +29,14 @@ let renderItemDetails = routerData => {
   return <ItemDetails item={matchingItem} />;
 };
 
+let renderReviewer = routerData => {
+  let reviewerId = routerData.match.params.rid;
+  let matchingReviewer = reviewerList.find(
+    reviewer => reviewer.id === reviewerId
+  );
+  return <Reviewer reviewer={matchingReviewer} />;
+};
+
 class App extends Component {
   render() {
     return (
@@ -36,6 +45,7 @@ class App extends Component {
           <Route exact={true} path="/" render={renderAllItems} />
           <Route exact={true} path="/seller/:sid" render={renderSeller} />
           <Route exact={true} path="/item/:pid" render={renderItemDetails} />
+          <Route exact={true} path="/reviewer/:rid" render={renderReviewer} />
         </div>
       </BrowserRouter>
     );
