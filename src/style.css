@@ -1,14 +1,114 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+/* Variables */
+html {
+  --primary-color: #ff7315;
+  --secondary-color: #f4f4f4;
+  --primary-text-color: #3a3535;
+  --secondary-text-color: #232020;
+  --primary-font: "Bebas Neue", cursive;
+  --secondary-font: "Montserrat", sans-serif;
+}
+/* End Variables */
+
+html {
+  font-size: 62.5%;
 }
 
-.app {
-  text-align: center;
+body {
+  background: var(--secondary-color);
+  margin: 0;
+  padding: 0;
+  color: var(--secondary-text-color);
+  font-size: 1.6rem;
+  font-family: var(--secondary-font);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+.card {
+  background: #fff;
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+.center {
+  border: 3px solid var(--primary-color);
+  padding: 10px;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  background: var(--primary-color);
+  color: var(--primary-text-color);
+}
+
+.nav-bar a {
+  color: var(--primary-text-color);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-bar a:hover {
+  color: hsl(0, 5%, 32%);
 }
 
 .app-logo {
+  margin: 0;
+  position: relative;
+  padding-left: 2.5rem;
+  font-family: var(--primary-font);
+  font-weight: normal;
+}
+
+.app-logo::before {
+  content: "";
+  display: block;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg)
+    center/cover no-repeat;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+main {
+  padding: 2rem;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.all-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1.2rem;
+}
+
+/* .app-logo {
   animation: app-logo-spin infinite 20s linear;
   height: 80px;
 }
@@ -36,27 +136,4 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
-
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
-}
-
-.center {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-}
+} */

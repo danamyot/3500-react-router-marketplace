@@ -9,7 +9,7 @@ import Reviewer from "./Reviewer.jsx";
 
 let renderAllItems = () => {
   return (
-    <div>
+    <div className="home-container">
       <div className="all-sellers">
         <div>All sellers:</div>
         {sellerList.map(seller => {
@@ -54,10 +54,17 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Route exact={true} path="/" render={renderAllItems} />
-          <Route exact={true} path="/seller/:sid" render={renderSeller} />
-          <Route exact={true} path="/item/:pid" render={renderItemDetails} />
-          <Route exact={true} path="/reviewer/:rid" render={renderReviewer} />
+          <div className="nav-bar">
+            <Link to="/" className="home-link">
+              <h1 className="app-logo">Marketplace</h1>
+            </Link>
+          </div>
+          <main>
+            <Route exact={true} path="/" render={renderAllItems} />
+            <Route exact={true} path="/seller/:sid" render={renderSeller} />
+            <Route exact={true} path="/item/:pid" render={renderItemDetails} />
+            <Route exact={true} path="/reviewer/:rid" render={renderReviewer} />
+          </main>
         </div>
       </BrowserRouter>
     );
