@@ -19,7 +19,7 @@ class ItemDetails extends Component {
       return productReviews.find(review => id == review.id);
     });
     return (
-      <div className="card center ">
+      <div className="card center">
         <Link to={`/item/${id}`}>
           <img height="100px" src={image} />
         </Link>
@@ -28,8 +28,12 @@ class ItemDetails extends Component {
           <div>{description}</div>
           <div>{price}</div>
           <div>{`Left in stock: ${remaining}`}</div>
-          <div>{price}</div>
           <Link to={`/seller/${sellerId}`}>View Seller's profile</Link>
+          <div>
+            <button onClick={() => this.props.addToCart(this.props.item)}>
+              Add to cart
+            </button>
+          </div>
         </div>
         <div className="item-reviews">
           {itemReviews.map(review => {

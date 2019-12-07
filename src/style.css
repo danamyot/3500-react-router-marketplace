@@ -56,8 +56,9 @@ a:hover {
 .nav-bar {
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   height: 5rem;
+  padding: 0 2rem;
   background: var(--primary-color);
   color: var(--primary-text-color);
 }
@@ -93,6 +94,28 @@ a:hover {
   transform: translateY(-50%);
 }
 
+.nav-cart {
+  width: 3rem;
+  position: relative;
+}
+
+.nav-cart img {
+  width: 100%;
+}
+
+.nav-cart .cart-inventory {
+  position: absolute;
+  top: -4px;
+  right: -5px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  background: var(--secondary-color);
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 main {
   padding: 2rem;
 }
@@ -108,32 +131,11 @@ main {
   grid-gap: 1.2rem;
 }
 
-/* .app-logo {
-  animation: app-logo-spin infinite 20s linear;
-  height: 80px;
+.cart-item {
+  display: flex;
+  justify-content: space-between;
 }
 
-.app-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.cart-item-info {
+  flex-grow: 1;
 }
-
-.app-title {
-  font-size: 1.5em;
-}
-
-.app-intro {
-  font-size: large;
-}
-
-@keyframes app-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-} */
