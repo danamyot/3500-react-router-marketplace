@@ -21,7 +21,7 @@ class Reviewer extends Component {
                     {itemList.find(item => item.id === review.productId).name}
                   </div>
                 </Link>
-                <div>{review.rating}</div>
+                <div>{"\u2B50".repeat(Number(review.rating))}</div>
                 <div>{review.comment}</div>
               </div>
             );
