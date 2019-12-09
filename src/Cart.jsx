@@ -20,7 +20,7 @@ class Cart extends Component {
               item => item.id === cartItem.id
             ).length;
             return (
-              <div className="cart-item card center">
+              <div className="cart-item card center" key={cartItem.id}>
                 <div className="cart-item-image">
                   <Link to={`/item/${cartItem.id}`}>
                     <img height="100px" src={cartItem.image} />
