@@ -1,25 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-import Item from "./Item.jsx";
 
 class Cart extends Component {
-  uniqueItems = this.props.cart.reduce((acc, currentItem) => {
-    return acc.some(item => item.id === currentItem.id)
-      ? acc
-      : acc.concat(currentItem);
-  }, []);
   render() {
+    let uniqueItems = this.props.cart.reduce((acc, currentItem) => {
+      return acc.some(item => item.id === currentItem.id)
+        ? acc
+        : acc.concat(currentItem);
+    }, []);
     return (
       <div className="cart-container card center">
         <div>Your Cart:</div>
         {this.props.cart.length === 0 ? (
           <p>There are no items in your cart!</p>
         ) : (
-          this.uniqueItems.map(cartItem => {
+          uniqueItems.map(cartItem => {
             let quantity = this.props.cart.filter(
               item => item.id === cartItem.id
-            );
+            ).length;
             return (
               <div className="cart-item card center">
                 <div className="cart-item-image">
@@ -32,7 +31,12 @@ class Cart extends Component {
                   <div>{cartItem.price}</div>
                 </div>
                 <div className="cart-item-quantity">
-                  <div>Quantity: {quantity.length}</div>
+                  <div>Quantity: {quantity}</div>
+                  <button
+                    onClick={() => this.props.removeFromCart(cartItem.id)}
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             );

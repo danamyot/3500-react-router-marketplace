@@ -59,8 +59,19 @@ class App extends Component {
   addToCart = item => {
     this.setState({ cart: this.state.cart.concat(item) });
   };
+  removeFromCart = itemId => {
+    let cartCopy = this.state.cart.slice();
+    let indexToRemove = 0;
+    cartCopy.forEach((cartItem, index) => {
+      if (cartItem.id === itemId) {
+        indexToRemove = index;
+      }
+    });
+    cartCopy.splice(indexToRemove, 1);
+    this.setState({ cart: cartCopy });
+  };
   renderCart = () => {
-    return <Cart cart={this.state.cart} />;
+    return <Cart cart={this.state.cart} removeFromCart={this.removeFromCart} />;
   };
   render() {
     return (
