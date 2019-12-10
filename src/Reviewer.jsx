@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-import { productReviews, itemList } from "./Data";
+import { productReviews, itemList, reviewerList } from "./Data";
 
 class Reviewer extends Component {
   render() {
-    const { name, reviews } = this.props.reviewer;
-    const itemReviews = reviews.map(id => {
+    const reviewer = reviewerList.find(
+      reviewer => reviewer.id === this.props.router.match.params.rid
+    );
+    const itemReviews = reviewer.reviews.map(id => {
       return productReviews.find(review => id == review.id);
     });
     return (
       <div className="card center">
-        <div>{name}</div>
+        <div>{reviewer.name}</div>
         <div className="item-reviews">
           {itemReviews.map(review => {
             return (

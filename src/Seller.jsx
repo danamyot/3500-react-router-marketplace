@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-import { itemList } from "./Data";
+import { sellerList, itemList } from "./Data";
 
 class Seller extends Component {
   render() {
-    const sellerItems = itemList.filter(
-      item => item.sellerId === this.props.seller.id
-    );
+    const sellerId = this.props.router.match.params.sid;
+    const seller = sellerList.find(seller => seller.id === sellerId);
+    const sellerItems = itemList.filter(item => item.sellerId === sellerId);
     return (
       <div className="card center">
-        <div>{this.props.seller.name}</div>
-        <div>{this.props.seller.rating}</div>
+        <div>{seller.name}</div>
+        <div>{seller.rating}</div>
         <div className="sellers-items">
           {sellerItems.map(item => {
             return (

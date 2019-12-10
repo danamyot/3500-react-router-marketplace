@@ -1,47 +1,24 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter, Link } from "react-router-dom";
-import { itemList, sellerList, reviewerList } from "./Data";
 import "./style.css";
-import Cart from "./Cart.jsx";
-import Item from "./Item.jsx";
+import { itemList } from "./Data";
+import NavBar from "./NavBar.jsx";
 import ItemDetails from "./ItemDetails.jsx";
+import Cart from "./Cart.jsx";
 import Seller from "./Seller.jsx";
 import Reviewer from "./Reviewer.jsx";
+import HomeScreen from "./HomeScreen.jsx";
 
 const renderAllItems = () => {
-  return (
-    <div className="home-container">
-      <div className="all-sellers">
-        <div>All sellers:</div>
-        {sellerList.map(seller => {
-          return (
-            <div key={seller.id}>
-              <Link to={`/seller/${seller.id}`}>{seller.name}</Link>
-            </div>
-          );
-        })}
-      </div>
-      <div className="all-items">
-        {itemList.map(item => {
-          return <Item item={item} key={item.id} />;
-        })}
-      </div>
-    </div>
-  );
+  return <HomeScreen />;
 };
 
 const renderSeller = routerData => {
-  let sellerId = routerData.match.params.sid;
-  let matchingSeller = sellerList.find(seller => seller.id === sellerId);
-  return <Seller seller={matchingSeller} />;
+  return <Seller router={routerData} />;
 };
 
 const renderReviewer = routerData => {
-  let reviewerId = routerData.match.params.rid;
-  let matchingReviewer = reviewerList.find(
-    reviewer => reviewer.id === reviewerId
-  );
-  return <Reviewer reviewer={matchingReviewer} />;
+  return <Reviewer router={routerData} />;
 };
 
 class App extends Component {
@@ -51,11 +28,6 @@ class App extends Component {
       cart: []
     };
   }
-  renderItemDetails = routerData => {
-    let productId = routerData.match.params.pid;
-    let matchingItem = itemList.find(item => item.id === productId);
-    return <ItemDetails item={matchingItem} addToCart={this.addToCart} />;
-  };
   addToCart = item => {
     this.setState({ cart: this.state.cart.concat(item) });
   };
@@ -70,6 +42,11 @@ class App extends Component {
     cartCopy.splice(indexToRemove, 1);
     this.setState({ cart: cartCopy });
   };
+  renderItemDetails = routerData => {
+    let productId = routerData.match.params.pid;
+    let matchingItem = itemList.find(item => item.id === productId);
+    return <ItemDetails item={matchingItem} addToCart={this.addToCart} />;
+  };
   renderCart = () => {
     return (
       <Cart
@@ -83,20 +60,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <div className="nav-bar">
-            <Link to="/" className="home-link">
-              <h1 className="app-logo">Marketplace</h1>
-            </Link>
-            <Link to="/cart">
-              <div className="nav-cart">
-                <img
-                  src="https://img.icons8.com/pastel-glyph/2x/shopping-cart--v2.png"
-                  alt="cart"
-                />
-                <p className="cart-inventory">{this.state.cart.length}</p>
-              </div>
-            </Link>
-          </div>
+          <NavBar cartInventory={this.state.cart.length} />
           <main>
             <Route exact={true} path="/" render={renderAllItems} />
             <Route exact={true} path="/seller/:sid" render={renderSeller} />
