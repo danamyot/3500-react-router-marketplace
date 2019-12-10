@@ -32,6 +32,9 @@ class Cart extends Component {
                 </div>
                 <div className="cart-item-quantity">
                   <div>Quantity: {quantity}</div>
+                  <button onClick={() => this.props.addToCart(cartItem)}>
+                    Add
+                  </button>
                   <button
                     onClick={() => this.props.removeFromCart(cartItem.id)}
                   >

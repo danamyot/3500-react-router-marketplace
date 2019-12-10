@@ -71,7 +71,13 @@ class App extends Component {
     this.setState({ cart: cartCopy });
   };
   renderCart = () => {
-    return <Cart cart={this.state.cart} removeFromCart={this.removeFromCart} />;
+    return (
+      <Cart
+        cart={this.state.cart}
+        removeFromCart={this.removeFromCart}
+        addToCart={this.addToCart}
+      />
+    );
   };
   render() {
     return (
