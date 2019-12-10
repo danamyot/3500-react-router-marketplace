@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
+
 import { itemList } from "./Data";
 
 class Seller extends Component {
