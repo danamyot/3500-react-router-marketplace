@@ -73,6 +73,10 @@ a:hover {
   color: hsl(0, 5%, 32%);
 }
 
+.nav-home {
+  flex-grow: 1;
+}
+
 .app-logo {
   margin: 0;
   position: relative;

@@ -8,6 +8,7 @@ import Cart from "./Cart.jsx";
 import Seller from "./Seller.jsx";
 import Reviewer from "./Reviewer.jsx";
 import HomeScreen from "./HomeScreen.jsx";
+import Profile from "./Profile.jsx";
 
 const renderAllItems = () => {
   return <HomeScreen />;
@@ -25,6 +26,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      purchases: [],
       cart: []
     };
   }
@@ -42,6 +44,14 @@ class App extends Component {
     cartCopy.splice(indexToRemove, 1);
     this.setState({ cart: cartCopy });
   };
+  checkoutCart = () => {
+    const purchasesCopy = this.state.purchases.slice();
+    purchasesCopy.push(this.state.cart);
+    this.setState({
+      cart: [],
+      purchases: purchasesCopy
+    });
+  };
   renderItemDetails = routerData => {
     let productId = routerData.match.params.pid;
     let matchingItem = itemList.find(item => item.id === productId);
@@ -53,8 +63,12 @@ class App extends Component {
         cart={this.state.cart}
         removeFromCart={this.removeFromCart}
         addToCart={this.addToCart}
+        checkoutCart={this.checkoutCart}
       />
     );
+  };
+  renderProfile = () => {
+    return <Profile allPurchases={this.state.purchases} />;
   };
   render() {
     return (
@@ -71,6 +85,7 @@ class App extends Component {
             />
             <Route exact={true} path="/reviewer/:rid" render={renderReviewer} />
             <Route exact={true} path="/cart" render={this.renderCart} />
+            <Route exact={true} path="/profile" render={this.renderProfile} />
           </main>
         </div>
       </BrowserRouter>
